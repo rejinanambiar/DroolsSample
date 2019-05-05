@@ -1,0 +1,13 @@
+package com.sample.rules
+ 
+import com.sample.model.Message;
+import com.sample.constants.Constants;
+ 
+rule "Check Price"
+    when
+        m : Message( price < 100 )
+    then            
+        m.setStatus( Constants.ERROR_DATA );
+        update( m );
+end
+
